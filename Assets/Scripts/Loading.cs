@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 public class Loading : MonoBehaviour {
 
 	public float speed = 1f;
 
+	private int time = 0;
 	private Rigidbody2D m_rigidbody2D;
 
 	void Start () {
@@ -23,9 +25,29 @@ public class Loading : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.name == "Mask1") {
 			transform.position = GameObject.Find ("Mask2").transform.position;
+			LogoFadeOut (false);
 		}
 		else if (other.name == "Mask2") {
 			transform.position = GameObject.Find ("Mask1").transform.position;
+			LogoFadeOut (true);
 		}
+	}
+
+	void LogoFadeOut (bool b) {
+		if (b)
+			time ++;
+		else
+			time --;
+
+		if (time > 10)
+			time = 10;
+		else if (time < 0)
+			time = 0;
+
+		Color color = Color.white;
+		color.a = time * .1f;
+
+		GameObject.Find ("Flag").GetComponent<SpriteRenderer> ().color = color;
+		GameObject.Find ("Title").GetComponent<SpriteRenderer> ().color = color;
 	}
 }
