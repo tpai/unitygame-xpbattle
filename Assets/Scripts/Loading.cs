@@ -39,8 +39,10 @@ public class Loading : MonoBehaviour {
 		else
 			time --;
 
-		if (time > 10)
-			time = 10;
+		if (time > 15) {
+			time = 15;
+			Application.LoadLevel ("Main");
+		}
 		else if (time < 0)
 			time = 0;
 
