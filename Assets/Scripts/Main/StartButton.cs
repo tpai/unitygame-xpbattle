@@ -30,8 +30,11 @@ public class StartButton : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D coll) {
 		if (coll.collider.tag == "Error") {
-
-			PlayerPrefs.SetInt ("Crashed", PlayerPrefs.GetInt ("Crashed")+1);
+			int crashed = PlayerPrefs.GetInt ("Crashed");
+			PlayerPrefs.SetInt ("Crashed", crashed + 1);
+#if UNITY_WEBPLAYER
+			GJBase.instance.AddScore (crashed + 1);
+#endif
 			Application.LoadLevel ("Error");
 		}
 	}
