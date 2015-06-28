@@ -7,6 +7,10 @@ public class StartButton : MonoBehaviour {
 	
 	void Start () {
 		m_rigidbody2D = GetComponent<Rigidbody2D> ();
+
+		if (PlayerPrefs.GetInt ("Crashed") >= 10) {
+			GetComponent<SpawnCursor>().enabled = true;
+		}
 	}
 	
 	void Update () {
@@ -26,6 +30,8 @@ public class StartButton : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D coll) {
 		if (coll.collider.tag == "Error") {
+
+			PlayerPrefs.SetInt ("Crashed", PlayerPrefs.GetInt ("Crashed")+1);
 			Application.LoadLevel ("Error");
 		}
 	}
