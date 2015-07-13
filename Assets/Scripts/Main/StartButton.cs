@@ -32,7 +32,7 @@ public class StartButton : MonoBehaviour {
 		if (coll.collider.tag == "Error") {
 			int crashed = PlayerPrefs.GetInt ("Crashed");
 			PlayerPrefs.SetInt ("Crashed", crashed + 1);
-#if UNITY_WEBPLAYER
+#if UNITY_WEBGL || UNITY_WEBPLAYER
 			GJBase.instance.AddScore (crashed + 1);
 #endif
 			Application.LoadLevel ("Error");
