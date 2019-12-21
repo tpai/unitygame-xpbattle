@@ -21,5 +21,11 @@ public class ShutdownText : MonoBehaviour {
 		else
 			content = contentEN;
 		shutdownText.text = content;
+
+		int passed = PlayerPrefs.GetInt ("Passed");
+		PlayerPrefs.SetInt ("Passed", passed + 1);
+#if UNITY_WEBGL || UNITY_WEBPLAYER
+		GJBase.instance.UnlockTrophy (passed + 1);
+#endif
 	}
 }
