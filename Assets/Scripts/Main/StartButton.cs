@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour {
 	
@@ -22,7 +22,7 @@ public class StartButton : MonoBehaviour {
 		m_rigidbody2D.velocity = new Vector2 (x * 10f, m_rigidbody2D.velocity.y);
 
 		transform.position = new Vector3 (
-			Mathf.Clamp (transform.position.x, -2.2f, 2.2f),
+			Mathf.Clamp (transform.position.x, -2.226f, 2.223f),
 			transform.position.y,
 			transform.position.z
 		);
@@ -35,7 +35,7 @@ public class StartButton : MonoBehaviour {
 #if UNITY_WEBGL || UNITY_WEBPLAYER
 			GJBase.instance.AddScore (crashed + 1);
 #endif
-			Application.LoadLevel ("Error");
+			SceneManager.LoadScene(Scene.Error);
 		}
 	}
 }

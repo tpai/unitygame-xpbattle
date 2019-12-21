@@ -1,6 +1,5 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Loading : MonoBehaviour {
 
@@ -39,12 +38,13 @@ public class Loading : MonoBehaviour {
 		else
 			time --;
 
-		if (time > 15) {
-			time = 15;
-			Application.LoadLevel ("Main");
+		if (time > 10) {
+			time = 10;
+			SceneManager.LoadScene(Scene.Main);
+		} else if (time < -5) {
+			time = -5;
+			SceneManager.LoadScene(Scene.Win95Start);
 		}
-		else if (time < 0)
-			time = 0;
 
 		Color color = Color.white;
 		color.a = time * .1f;

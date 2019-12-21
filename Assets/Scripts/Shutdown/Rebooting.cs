@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Rebooting : MonoBehaviour {
 	
 	void Start () {
-		Invoke ("Reboot", 4f);
+		Invoke ("Reboot", 5f);
 	}
 
 	void Reboot () {
-		Application.LoadLevel ("Start");
+		SceneManager.LoadScene(Scene.Start);
 	}
 }

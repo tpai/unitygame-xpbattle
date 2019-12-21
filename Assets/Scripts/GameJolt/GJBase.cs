@@ -37,6 +37,10 @@ public class GJBase : MonoBehaviour {
 		}
 	}
 
+	public void UnlockRetroTrophy() {
+		GameJolt.API.Trophies.Unlock(114790, (bool success) => { Debug.Log ("Unlock retro trophy!"); });
+	}
+
 	public void UnlockTrophy (int val) {
 		if (val >= 10)
 			GameJolt.API.Trophies.Unlock (33124, (bool success) => { Debug.Log ("Unlock gold trophy!"); });

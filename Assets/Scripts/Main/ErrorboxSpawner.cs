@@ -7,7 +7,7 @@ public class ErrorboxSpawner : MonoBehaviour {
 	public int errorboxAmount = 50;
 
 	void Start () {
-		Invoke ("StartSpawn", 3.5f);
+		Invoke ("StartSpawn", 1f);
 	}
 
 	void StartSpawn () {

@@ -10,7 +10,7 @@ public class SpawnCursor : MonoBehaviour {
 	void Start () {
 		m_audioSource = GetComponent<AudioSource> ();
 
-		InvokeRepeating ("Spawn", 3.5f, 1f);
+		InvokeRepeating ("Spawn", 1f, 1f);
 	}
 	
 	void Spawn () {
